@@ -11,7 +11,8 @@
 		"ejs": "2.5.x",
 		"request": "latest",
 		"parse5": "latest",
-		"jsdom": "latest"
+		"jsdom": "latest",
+		"speakeasy-nlp": "latest" 
 	},
 	"repository": {},
 	"engines": {

@@ -4,6 +4,8 @@ var router = express.Router();
 var request = require('request');
 var parse5 = require('parse5');
 var jsdom = require("jsdom");
+var speak = require("speakeasy-nlp");
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -18,11 +20,15 @@ router.get('/', function(req, res, next) {
 	  		console.error(err);
 	  	} else {
 		    var p1 = window.$("p").first().text();
-		    console.log("THE FIRST PARAGRAPH SAYS: " + p1);
+		    
+		    // classification of the text
+		    var classy = speak.classify(p1);
+		    
+		    res.render('index', { title: 'Mechancial Turk', paragraph: p1, classification: JSON.parse(classy) });
 	   }
 	  }
 	);
-	//res.render('index', { title: 'Mechancial Turk', paragraph: display });
+	//
 });
 
 module.exports = router;
