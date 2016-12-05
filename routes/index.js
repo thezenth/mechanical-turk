@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
 		    var p1 = window.$("p").first().text();
 		    
 		    // classification of the text
-		    var classy = speak.classify(p1);
+		    var classy = speak.classify("The movement began around 1790, gained momentum by 1800 and, after 1820, membership rose rapidly among Baptist and Methodist congregations whose preachers led the movement.");
 		    
 		    res.render('index', { title: 'Mechancial Turk', paragraph: p1, classification: JSON.stringify(classy) });
 	   }
