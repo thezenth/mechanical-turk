@@ -20,6 +20,8 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(express.static(__dirname + '/views'));
 
+app.set('view engine', 'ejs');
+
 // use all of our routes- looks at index.js
 app.use(require('./routes'));
 
