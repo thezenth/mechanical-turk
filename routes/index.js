@@ -11,7 +11,9 @@ router.get('/', function(req, res, next) {
 	request(queryUrl, function(err, qRes, body) {
 		var document = parse5.parse(body);
 		
-		res.render('index', { title: 'Mechancial Turk', paragraph: document });
+		var display = document.childNodes[1]['html']['body'][3][4][3][5];
+		
+		res.render('index', { title: 'Mechancial Turk', paragraph: display });
 	});
 
 	
