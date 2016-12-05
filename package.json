@@ -9,7 +9,8 @@
 		"express": "4.13.x",
 		"cfenv": "1.0.x",
 		"ejs": "2.5.x",
-		"request": "latest"
+		"request": "latest",
+		"parse5": "latest"
 	},
 	"repository": {},
 	"engines": {
