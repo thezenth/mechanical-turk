@@ -14,9 +14,12 @@ router.get('/', function(req, res, next) {
 	  queryUrl,
 	  ["http://code.jquery.com/jquery.js"],
 	  function (err, window) {
-	    var p1 = window.$("p").first().text();
-	    
-	    console.log("there have been", window.$("a").length - 4, "io.js releases!");
+	  	if(err) {
+	  		console.error(err);
+	  	} else {
+		    var p1 = window.$("p").first().text();
+		    console.log("THE FIRST PARAGRAPH SAYS: " + p1);
+	   }
 	  }
 	);
 	//res.render('index', { title: 'Mechancial Turk', paragraph: display });
