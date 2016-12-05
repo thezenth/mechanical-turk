@@ -18,6 +18,11 @@ var app = express();
 // serve the files out of ./public as our main files
 app.use(express.static(__dirname + '/public'));
 
+app.use(express.static(__dirname + '/views'));
+
+// use all of our routes- looks at index.js
+app.use(require('./routes'));
+
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
 
