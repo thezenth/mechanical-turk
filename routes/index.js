@@ -10,10 +10,10 @@ router.get('/', function(req, res, next) {
 	var queryUrl = "https://en.wikipedia.org/wiki/Second_Great_Awakening";
 	request(queryUrl, function(err, qRes, body) {
 		var document = parse5.parse(body);
+		console.dir(document);
+		//var display = document.childNodes[1]['html']['body'][3][4][3][5];
 		
-		var display = document.childNodes[1]['html']['body'][3][4][3][5];
-		
-		res.render('index', { title: 'Mechancial Turk', paragraph: display });
+		//res.render('index', { title: 'Mechancial Turk', paragraph: display });
 	});
 
 	
