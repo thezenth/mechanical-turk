@@ -31,12 +31,17 @@ router.get('/', function(req, res, next) {
 		    	var thesaurusQueryUrl = `http://thesaurus.altervista.org/thesaurus/v1?word=${noun}&language=en_US&key=${thesaurusAPIKEY}&output=json`;
 		    	
 		    	request(thesaurusQueryUrl, function (err, tRes, body) {
-		    		var parsedTRes = JSON.parse(body);
-		    		
-		    		for (var responses in parsedTRes['response']) {
-		    			var possibleSyns = (responses[1].synonyms).slice('|');
-		    			newParagraph.replace(noun, possibleSyns[0]); // change the 0 to random eventually...
-		    		}
+		    		if (err) {
+		    			console.log("ERROR:" + err);
+		    		} else {
+		    			console.log(body);
+		    			var parsedTRes = JSON.parse(body);
+			    		
+			    		for (var responses in parsedTRes['response']) {
+			    			var possibleSyns = (responses[1].synonyms).slice('|');
+			    			newParagraph.replace(noun, possibleSyns[0]); // change the 0 to random eventually...
+			    		}
+		    		}	
 		    	});
 		    }
 		    
