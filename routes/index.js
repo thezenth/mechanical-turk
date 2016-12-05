@@ -24,7 +24,7 @@ router.get('/', function(req, res, next) {
 		    // classification of the text
 		    var classy = speak.classify(p1);
 		    
-		    res.render('index', { title: 'Mechancial Turk', paragraph: p1, classification: JSON.parse(classy) });
+		    res.render('index', { title: 'Mechancial Turk', paragraph: p1, classification: JSON.stringify(classy) });
 	   }
 	  }
 	);
