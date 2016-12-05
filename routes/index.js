@@ -3,21 +3,21 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 var parse5 = require('parse5');
+var jsdom = require("jsdom");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	
 	var queryUrl = "https://en.wikipedia.org/wiki/Second_Great_Awakening";
-	request(queryUrl, function(err, qRes, body) {
-		var document = parse5.parse(body);
-		console.dir(document.childNodes[1].childNodes);
-		//var display = document.childNodes[1]['html']['body'][3][4][3][5];
-		
-		//res.render('index', { title: 'Mechancial Turk', paragraph: display });
-	});
 
-	
-
+	jsdom.env(
+	  queryUrl,
+	  ["http://code.jquery.com/jquery.js"],
+	  function (err, window) {
+	    console.log("there have been", window.$("a").length - 4, "io.js releases!");
+	  }
+	);
+	//res.render('index', { title: 'Mechancial Turk', paragraph: display });
 });
 
 module.exports = router;
