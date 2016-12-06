@@ -50,19 +50,17 @@ router.get('/', function(req, res, next) {
 				    			console.log("REPLACING NOUN");
 				    			var possibleSyns = parsedTRes['response'][0]['list']['synonyms'].slice('|');
 				    			newParagraph.replace(noun, possibleSyns[0]); // change th 0 to random eventually...
-				    			
-				    			waitingForThesaurus--;
-				    			complete();
 				    		} else {
 				    			console.log("Undefined, or something. I don't know. jesus.");
-				    			waitingForThesaurus--; //subtract even if we don't do anything
-				    			complete();
 				    		}
 			    		}
 
 			    		//var possibleSyns = parsedTRes['response'][0]['list']['synonyms'].slice('|');
 			    		//newParagraph.replace(noun, possibleSyns[0]); // change th 0 to random eventually...
-		    		}	
+		    		}
+		    		
+				    waitingForThesaurus--;
+				    complete();
 		    	});
 		    }
 		    
