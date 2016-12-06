@@ -29,7 +29,7 @@ router.get('/', function(req, res, next) {
 		    
 		    for (var noun in classed.nouns) {
 		    	var thesaurusQueryUrl = `http://thesaurus.altervista.org/thesaurus/v1?word=${noun}&language=en_US&key=${thesaurusAPIKEY}&output=json`;
-		    	
+		    	console.log("THESAURUS URL:" + thesaurusQueryUrl);
 		    	request(thesaurusQueryUrl, function (err, tRes, body) {
 		    		if (err) {
 		    			console.log("ERROR:" + err);
