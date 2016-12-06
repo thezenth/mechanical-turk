@@ -40,6 +40,7 @@ router.get('/', function(req, res, next) {
 		    		} else {
 		    			//console.log(body);
 		    			var parsedTRes = JSON.parse(body);
+		    			console.log("LENGTH: " + parsedTRes.response.length);
 			    		if(parsedTRes.response.length > 0) { //check if its actually got anyhting...
 			    			console.log(JSON.stringify(parsedTRes.response[0]));
 			    		} else {
