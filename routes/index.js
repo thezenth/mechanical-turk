@@ -29,7 +29,7 @@ router.get('/', function(req, res, next) {
 		    
 		    for (var n = 0; n<classed.nouns.length; n++) {
 
-				var noun = classed.nouns[d];		    	
+				var noun = classed.nouns[n];		    	
 		    	console.log("NOUN:" + noun);
 		    	
 		    	var thesaurusQueryUrl = `http://thesaurus.altervista.org/thesaurus/v1?word=${noun}&language=en_US&key=${thesaurusAPIKEY}&output=json`;
