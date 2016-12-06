@@ -44,6 +44,9 @@ router.get('/', function(req, res, next) {
 			    			console.log("LENGTH: " + parsedTRes.response.length);
 				    		if(parsedTRes.response.length > 0) { //check if its actually got anyhting...
 				    			console.log(JSON.stringify(parsedTRes.response[0]));
+				    			console.log("REPLACING NOUN");
+				    			var possibleSyns = parsedTRes['response'][0]['list']['synonyms'].slice('|');
+				    			newParagraph.replace(noun, possibleSyns[0]); // change th 0 to random eventually...
 				    		} else {
 				    			console.log("Undefined, or something. I don't know. jesus.");
 				    		}
