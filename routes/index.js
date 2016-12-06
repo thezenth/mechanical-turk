@@ -49,6 +49,7 @@ router.get('/', function(req, res, next) {
 				    			console.log(JSON.stringify(parsedTRes.response[0]));
 				    			console.log("REPLACING NOUN");
 				    			var possibleSyns = parsedTRes['response'][0]['list']['synonyms'].slice('|');
+				    			console.log("SYNONYM FOR " + noun + ": " + possibleSyns[0]);
 				    			newParagraph.replace(noun, possibleSyns[0]); // change th 0 to random eventually...
 				    			console.log("NEW PARAGRAPGH:" + newParagraph);
 				    		} else {
