@@ -50,6 +50,7 @@ router.get('/', function(req, res, next) {
 				    			console.log("REPLACING NOUN");
 				    			var possibleSyns = parsedTRes['response'][0]['list']['synonyms'].slice('|');
 				    			newParagraph.replace(noun, possibleSyns[0]); // change th 0 to random eventually...
+				    			console.log("NEW PARAGRAPGH:" + newParagraph);
 				    		} else {
 				    			console.log("Undefined, or something. I don't know. jesus.");
 				    		}
@@ -67,6 +68,7 @@ router.get('/', function(req, res, next) {
 		    function complete() {
 		    	console.log("COUNT: " + waitingForThesaurus);
 		    	if (waitingForThesaurus === 0) {
+		    		console.log("RENDERING PAGE");
 		    		res.render('index', { title: 'Mechancial Turk', paragraph: p1, classification: JSON.stringify(classed), new_paragraph: newParagraph });
 		    	}
 		    }
