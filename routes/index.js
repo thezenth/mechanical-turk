@@ -54,6 +54,7 @@ router.get('/', function(req, res, next) {
 				    			waitingForThesaurus--;
 				    		} else {
 				    			console.log("Undefined, or something. I don't know. jesus.");
+				    			waitingForThesaurus--; //subtract even if we don't do anything
 				    		}
 			    		}
 
@@ -64,6 +65,7 @@ router.get('/', function(req, res, next) {
 		    }
 		    
 		    function complete() {
+		    	console.log("COUNT: " + waitingForThesaurus);
 		    	if (waitingForThesaurus === 0) {
 		    		res.render('index', { title: 'Mechancial Turk', paragraph: p1, classification: JSON.stringify(classed), new_paragraph: newParagraph });
 		    	}
