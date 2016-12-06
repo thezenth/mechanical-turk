@@ -41,8 +41,9 @@ router.get('/', function(req, res, next) {
 		    			//console.log(body);
 		    			var parsedTRes = JSON.parse(body);
 			    		
-			    		var possibleSyns = parsedTRes['response'][0]['list']['synonyms'].slice('|');
-			    		newParagraph.replace(noun, possibleSyns[0]); // change th 0 to random eventually...
+			    		console.log(JSON.stringify(parsedTRes));
+			    		//var possibleSyns = parsedTRes['response'][0]['list']['synonyms'].slice('|');
+			    		//newParagraph.replace(noun, possibleSyns[0]); // change th 0 to random eventually...
 		    		}	
 		    	});
 		    }
