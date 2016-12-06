@@ -41,7 +41,7 @@ router.get('/', function(req, res, next) {
 		    			//console.log(body);
 		    			var parsedTRes = JSON.parse(body);
 			    		
-			    		console.log(JSON.stringify(parsedTRes.response[0].synonyms));
+			    		console.log(JSON.stringify(parsedTRes.response));
 			    		//var possibleSyns = parsedTRes['response'][0]['list']['synonyms'].slice('|');
 			    		//newParagraph.replace(noun, possibleSyns[0]); // change th 0 to random eventually...
 		    		}	
