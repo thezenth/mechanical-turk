@@ -40,7 +40,7 @@ router.get('/', function(req, res, next) {
 		    		} else {
 		    			//console.log(body);
 		    			var parsedTRes = JSON.parse(body);
-			    		if(parsedTRes) {
+			    		if(parsedTRes.response[0]) { //check if its actually defined...
 			    			console.log(JSON.stringify(parsedTRes.response[0]));
 			    		} else {
 			    			console.log("Undefined, or something. I don't know. jesus.");
