@@ -27,6 +27,8 @@ router.get('/', function(req, res, next) {
 		    
 		    var thesaurusAPIKEY = "WPWGn8trAZDrMa8yrC0f";
 		    
+		    var waitingForThesaurus = classed.nouns.length;
+		    
 		    for (var n = 0; n<classed.nouns.length; n++) {
 
 				var noun = classed.nouns[n];		    	
@@ -34,6 +36,7 @@ router.get('/', function(req, res, next) {
 		    	
 		    	var thesaurusQueryUrl = `http://thesaurus.altervista.org/thesaurus/v1?word=${noun}&language=en_US&key=${thesaurusAPIKEY}&output=json`;
 		    	console.log("THESAURUS URL:" + thesaurusQueryUrl);
+		    	
 		    	request(thesaurusQueryUrl, function (err, tRes, body) {
 		    		if (err) {
 		    			console.log("ERROR:" + err);
@@ -47,6 +50,8 @@ router.get('/', function(req, res, next) {
 				    			console.log("REPLACING NOUN");
 				    			var possibleSyns = parsedTRes['response'][0]['list']['synonyms'].slice('|');
 				    			newParagraph.replace(noun, possibleSyns[0]); // change th 0 to random eventually...
+				    			
+				    			waitingForThesaurus--;
 				    		} else {
 				    			console.log("Undefined, or something. I don't know. jesus.");
 				    		}
@@ -58,7 +63,11 @@ router.get('/', function(req, res, next) {
 		    	});
 		    }
 		    
-		    res.render('index', { title: 'Mechancial Turk', paragraph: p1, classification: JSON.stringify(classed), new_paragraph: newParagraph });
+		    function complete() {
+		    	if (waitingForThesaurus === 0) {
+		    		res.render('index', { title: 'Mechancial Turk', paragraph: p1, classification: JSON.stringify(classed), new_paragraph: newParagraph });
+		    	}
+		    }
 	   }
 	  }
 	);
