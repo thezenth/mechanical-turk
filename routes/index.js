@@ -40,8 +40,12 @@ router.get('/', function(req, res, next) {
 		    		} else {
 		    			//console.log(body);
 		    			var parsedTRes = JSON.parse(body);
-			    		
-			    		console.log(JSON.stringify(parsedTRes.response));
+			    		if(parsedTRes) {
+			    			console.log(JSON.stringify(parsedTRes.response[0]));
+			    		} else {
+			    			console.log("Undefined, or something. I don't know. jesus.");
+			    		}
+
 			    		//var possibleSyns = parsedTRes['response'][0]['list']['synonyms'].slice('|');
 			    		//newParagraph.replace(noun, possibleSyns[0]); // change th 0 to random eventually...
 		    		}	
