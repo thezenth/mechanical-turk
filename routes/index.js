@@ -27,10 +27,10 @@ router.get('/', function(req, res, next) {
 		    
 		    var thesaurusAPIKEY = "WPWGn8trAZDrMa8yrC0f";
 		    
-		    for (var noun in classed.nouns) {
+		    for (var noun in JSON.parse(classed.nouns)) {
 		    	
 		    	console.log("NOUN:" + noun);
-		    	console.log(classed.nouns);
+		    	console.log(JSON.parse(classed.nouns));
 		    	
 		    	var thesaurusQueryUrl = `http://thesaurus.altervista.org/thesaurus/v1?word=${noun}&language=en_US&key=${thesaurusAPIKEY}&output=json`;
 		    	console.log("THESAURUS URL:" + thesaurusQueryUrl);
